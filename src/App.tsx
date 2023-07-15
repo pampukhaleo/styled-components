@@ -5,11 +5,20 @@ import styled from "styled-components";
 function App() {
   return (
     <div className="App">
+      <Menu>
+        <ul>
+          <li><a href="#">menu item 1</a></li>
+          <li><a href="#">menu item 2</a></li>
+          <li><a href="#">menu item 3</a></li>
+        </ul>
+      </Menu>
+
       <Box>
         <StyledBtn>Button</StyledBtn>
         <StyledBtn as='a' href='#'>Link</StyledBtn>
+        <StyledBtn as={StyledLink} href='#'>StyledLink</StyledBtn>
+        <StyledLink href={'#'}>Styled Link</StyledLink>
         <SuperBtn>SuperBtn</SuperBtn>
-        <StyledLink>Styled Link</StyledLink>
       </Box>
     </div>
   );
@@ -24,6 +33,14 @@ const StyledBtn = styled.button`
   color: snow;
   font-size: 2rem;
   font-weight: bold;
+  
+  &:hover {
+    background-color: bisque;
+  }
+  
+  &:last-child {
+    background-color: chartreuse;
+  }
 `
 
 const StyledLink = styled.a`
@@ -42,4 +59,28 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  
+  button {
+    cursor: pointer;
+  }
+
+  ${StyledLink} {
+    cursor: zoom-in;
+  }
+`
+const Menu = styled.nav`
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    
+    li > a {
+      color: green;
+    }
+    
+    li + li {
+      margin-left: 20px;
+    }
+  }
 `
